@@ -7,6 +7,11 @@ int main(){
         for(int i = 0; i<5 ; i++){
             printf("Hola Mundo\n");
         }
-
+        int cont;
+        while(cont = 0 < 5){
+            printf("While \n");
+            cont+5;
+            cont-4;
+        }
     return 0;
 }
