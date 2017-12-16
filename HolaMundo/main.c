@@ -6,6 +6,7 @@ int main(){
 
         for(int i = 0; i<5 ; i++){
             printf("Hola Mundo\n");
+            printf("Hola2\n");
         }
         int cont;
         while(cont = 0 < 5){
