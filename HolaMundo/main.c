@@ -10,7 +10,7 @@ int main(){
         }
         int cont;
         while(cont = 0 < 5){
-            printf("While \n");
+            printf("While mas mas mas\n");
             cont+5;
             cont-4;
 
