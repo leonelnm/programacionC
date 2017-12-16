@@ -13,6 +13,10 @@ int main(){
             printf("While \n");
             cont+5;
             cont-4;
+
+            if (cont != 0){
+                printf("desde if");
+            }
         }
     return 0;
 }
