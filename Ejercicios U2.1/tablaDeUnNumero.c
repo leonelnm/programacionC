@@ -10,6 +10,7 @@ int main(){
     for(int i=0; i<=10; i++){
         printf ("%i * %d\t= %d\n", in, i, (i*in));
     }
+    
 
     return 0;
 }
