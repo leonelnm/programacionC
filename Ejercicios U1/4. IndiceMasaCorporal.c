@@ -27,8 +27,11 @@ int main(){
     altura = altura / 100;
     imc = (peso/(altura*altura));
 
-    if (imc >30) printf("Usted tiene obesidad\n");
-
     printf("%s, %s de %i tiene un I.M.C = %f\n",Nombre,apellidos,edad,imc);
+    if (imc >30) {
+        printf("Usted tiene obesidad\n");
+    }else if(imc > 25 && imc<30){
+        printf("Usted tiene pequeño sobre peso");
+    }
     return 0;
 }
