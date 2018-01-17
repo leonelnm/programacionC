@@ -11,6 +11,7 @@ int main(){
     printf("Ingrese numero: ");
     scanf("%li", &num);
    
+    printf("El numero de divisiones parciales = %i\n", (int)sqrt(num));
     int i=2;
         while(i <= (int)sqrt(num)){
            // num2 = num%i;
