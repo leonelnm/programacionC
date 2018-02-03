@@ -11,7 +11,7 @@
         punto v3;
     }triangulo;
 
-    typedef struct stTitular{
+    typedef struct stTitulars{
         char nombre[10];
         char apellido[10];
         char direccion[20];
