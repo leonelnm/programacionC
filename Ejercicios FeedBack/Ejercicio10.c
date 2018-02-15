@@ -10,6 +10,7 @@ void imprimeVector(int *v){
     {
         printf("%i ", v[i]);
     }
+    printf("\n");
     return;
 }
 
@@ -44,6 +45,9 @@ int main(){
 
     imprimeVector(pares);
 
+    //Salida
+    fflush(stdin);
+    char tecla = getchar();
     return 0;
     
 }

@@ -19,7 +19,7 @@ void barrasAsteriscos (int *v){
 int main(){
 
     int v[N] = {2,4,6,8,5,12,14,16,18,20};
-
+    
     barrasAsteriscos(v);
     
 
