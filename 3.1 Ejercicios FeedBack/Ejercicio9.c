@@ -41,6 +41,7 @@ void ordenarVector(int *v){
     }
     return;
 }
+
 int main(){
 
     int v[N] = {21,4,6,20,5,12,14,16,18,20};
