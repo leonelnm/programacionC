@@ -6,7 +6,7 @@
 
 int mostrarMenu(){
     int in = 0;
-    printf("\n1. Ingresar datos\n");
+    printf("\n\n1. Ingresar datos\n");
     printf("2. Mostrar total del vendedor\n");
     printf("3. Mostrar ingresos totales\n");
     printf("4. Salir\n");
@@ -35,16 +35,29 @@ float ingresaVenta(){
     return ingreso;
 }
 
-double totalVentas(double ventas[][N_PRODUCTOS], int vendedor){
-    double valor = 0;
-
+float totalVentas(double ventas[][N_PRODUCTOS], int vendedor){
+    float valor = 0.0f;
+    for(int i = 0; i < N_PRODUCTOS; i++){
+        valor += ventas[vendedor][i];
+    }
     return  valor;
+}
+
+double mostrarIngresos(double ventas[][N_PRODUCTOS]){
+    double valorT = 0;
+
+    for(int i = 0; i < N_VENDEDORES; i++){
+       for(int j = 0; j < N_PRODUCTOS; j++){
+            valorT += ventas[i][j];
+       }
+    }
+    return valorT;
 }
 
 int main(){
 
     double ventas[N_VENDEDORES][N_PRODUCTOS];
-    int menu,vendedor, producto;
+    int menu, vendedor, producto;
     float venta;
 
 
@@ -60,14 +73,18 @@ int main(){
             break;
         case 2:
             vendedor = ingresaVendedor();
-            printf("El total de ventas del vendedor %i es: %.2f\n",vendedor,totalVentas(ventas,vendedor));
+            printf("\n\tEl total de ventas del vendedor %i es: %.2f€\n",vendedor,totalVentas(ventas,vendedor));
             break;
+        case 3:
+            printf("Los ingresos totales son: %lf € \n", mostrarIngresos(ventas));
+            break;
+        case 4:
+            return 0;
         default:
+            printf("\n\t Ingrese una opción válida!\n");
             break;
         }
     }
     
-
-
     return 0;
 }

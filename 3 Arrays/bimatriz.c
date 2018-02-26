@@ -18,6 +18,7 @@ int main(){
             mat1[i][j] = rand()%10;
         }
     }
+
     for(int i=0; i<TAM; i++){
         for(int j=0; j<TAM; j++){
             mat2[i][j] = rand()%10;
