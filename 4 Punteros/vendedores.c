@@ -20,12 +20,26 @@ int ingresaVendedor(){
     int vend = 0;
     printf("Ingresa el numero de vendedor: ");
     scanf("%i", &vend);
+    if(vend > 9)
+    {
+        printf("\t*** Ingrese un vendedor entre 0 y 17\n");
+        printf("Ingresa el numero de vendedor: ");
+        scanf("%i", &vend);
+    }
     return vend;
 } 
 int ingresaProducto(){
     int prod = 0;
     printf("Ingresa el numero de producto: ");
     scanf("%i", &prod);
+    if(prod > 9)
+    {
+        printf("\t*** Ingrese un producto entre 0 y 9\n");
+        printf("Ingresa el numero de producto: ");
+        scanf("%i", &prod);
+    }
+
+    
     return prod;
 }
 float ingresaVenta(){
@@ -47,16 +61,19 @@ double mostrarIngresos(double ventas[][N_PRODUCTOS]){
     double valorT = 0;
 
     for(int i = 0; i < N_VENDEDORES; i++){
+        printf("%i)\t", i);
        for(int j = 0; j < N_PRODUCTOS; j++){
+            printf("%5.2f  ",ventas[i][j]);
             valorT += ventas[i][j];
        }
+       printf("\n");
     }
     return valorT;
 }
 
 int main(){
 
-    double ventas[N_VENDEDORES][N_PRODUCTOS];
+    double ventas[N_VENDEDORES][N_PRODUCTOS] ={0};
     int menu, vendedor, producto;
     float venta;
 
@@ -76,7 +93,7 @@ int main(){
             printf("\n\tEl total de ventas del vendedor %i es: %.2f€\n",vendedor,totalVentas(ventas,vendedor));
             break;
         case 3:
-            printf("Los ingresos totales son: %lf € \n", mostrarIngresos(ventas));
+            printf("Los ingresos totales son: %.2lf € \n", mostrarIngresos(ventas));
             break;
         case 4:
             return 0;
