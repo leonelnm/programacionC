@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX 1000
+#define MAX 10
 #define MAYUSCULAS 26
 
 int main(){
