@@ -60,7 +60,7 @@ float totalVentas(double ventas[][N_PRODUCTOS], int vendedor){
 double mostrarIngresos(double ventas[][N_PRODUCTOS]){
     double valorT = 0;
 
-    for(int i = 0; i < N_VENDEDORES; i++){
+    for(int i = 1; i < N_VENDEDORES; i++){
         printf("%i)\t", i);
        for(int j = 0; j < N_PRODUCTOS; j++){
             printf("%5.2f  ",ventas[i][j]);
