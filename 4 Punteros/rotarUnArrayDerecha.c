@@ -31,7 +31,7 @@ int main(){
         printf("%i ", a[i]);
     }
 
-    printf("\n%li\n", sizeof(float));
+    printf("\nEl tamaño de un float: %li\n", sizeof(float));
     
     return 0;
 }
