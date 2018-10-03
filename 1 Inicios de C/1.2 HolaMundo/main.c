@@ -8,15 +8,14 @@ int main(){
             printf("Hola Mundo\n");
             printf("Hola2\n");
         }
-        int cont;
-        while(cont = 0 < 5){
+        int cont=0;
+        while(cont < 5){
             printf("While \n");
-            cont+5;
-            cont-4;
-
+           
             if (cont != 0){
-                printf("desde if");
+                printf("---desde if");
             }
+            cont+=2;
         }
     return 0;
 }
