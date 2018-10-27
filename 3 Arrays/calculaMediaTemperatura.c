@@ -17,7 +17,7 @@ int main(){
         media += dias[i];
 
     }
-    printf("La temperatura media de la semana ha sido: %.2fºC\n",(media/d));
+    printf("La temperatura media de la semana ha sido: %.3fºC\n",(media/d));
 
     return 0;
 }
