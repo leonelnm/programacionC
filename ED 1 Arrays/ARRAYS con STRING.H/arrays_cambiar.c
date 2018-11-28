@@ -13,6 +13,8 @@
    printf("Cadena1 = %s\n",cadena1);
    printf("Cadena2 = %s\n",cadena2);
 
+  printf("Tamaño Cadena 2 = %ld\n", strlen(cadena2));
+
  }
 
 
