@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void cambia(int **a1, int **a2 ) {  // No se permite recorrer los arrays ni copiar los valores
-                     // a un tercer array auxiliar
-    int* aux = *a1; 
-    *a1 = *a2;
-    *a2 = aux;
+void cambia(int **a1, int **a2 ) { 
 
+     int *aux = *a1;
+     *a1 = *a2;
+     *a2 = aux;
 }
 
 int main()
@@ -28,6 +27,8 @@ int main()
       for(int i = 0; i < 4; i++) {
            printf("Antes de cambiar %d, %d\n", a1[i], a2[i]);
       }
+
+     printf("%p\n", &a1);
 
       cambia(&a1, &a2); //pasar a1 y a2
 

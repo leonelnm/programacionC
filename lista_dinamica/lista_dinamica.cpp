@@ -9,7 +9,7 @@ int es_vacia (P_NODO_LISTA lista){
         return 0;
 }
 
-P_NODO_LISTA insertar(P_NODO_LISTA lst, int valor, int pos){ // devuelve P_NODO_LISTA
+P_NODO_LISTA insertar(P_NODO_LISTA lst, Persona persona, int pos){ // devuelve P_NODO_LISTA
     
     P_NODO_LISTA laux, lsgte; 
     int i;
@@ -21,7 +21,7 @@ P_NODO_LISTA insertar(P_NODO_LISTA lst, int valor, int pos){ // devuelve P_NODO_
     //Insertamos al principio
     if ( pos == 1 || es_vacia(lst)){  
         laux = (P_NODO_LISTA)malloc(sizeof(NODO_LISTA));
-        laux->valor = valor;        
+        laux->persona = persona;        
         laux->anterior = NULL;  // Soy el primero, pongo el anterior a NULL
         laux->siguiente = lst;  // Y el siguiente lo apunto a lst        
         if(!es_vacia(lst))
@@ -38,7 +38,7 @@ P_NODO_LISTA insertar(P_NODO_LISTA lst, int valor, int pos){ // devuelve P_NODO_
     if( laux != NULL) {
         lsgte = laux->siguiente;
         laux->siguiente = (P_NODO_LISTA)malloc(sizeof(NODO_LISTA));
-        laux->siguiente->valor = valor;
+        laux->siguiente->persona = persona;
         laux->siguiente->siguiente = lsgte; // Apuntamos al siguiente
         laux->siguiente->anterior = laux;   // Apuntamos hacia atras
         
@@ -51,7 +51,7 @@ P_NODO_LISTA insertar(P_NODO_LISTA lst, int valor, int pos){ // devuelve P_NODO_
 }
 
 
-P_NODO_LISTA borrar(P_NODO_LISTA lst, int pos, int *valor){
+P_NODO_LISTA borrar(P_NODO_LISTA lst, int pos, Persona *persona){
     
     P_NODO_LISTA laux;
     int i;
@@ -59,7 +59,7 @@ P_NODO_LISTA borrar(P_NODO_LISTA lst, int pos, int *valor){
     //Si la posicion esta fuera de rango o la lista es vacia nose hace nada. Devolvemos la lista tal cual.
     if ((pos < 1) || (es_vacia(lst))){
         printf("ERROR, Lista vacia o posicion no valida\n");
-        *valor = -1;
+        persona = NULL;
         return lst;
         
     }
@@ -67,7 +67,7 @@ P_NODO_LISTA borrar(P_NODO_LISTA lst, int pos, int *valor){
     // Primera posicion
     if (pos == 1){
         laux = lst->siguiente;
-        *valor = lst->valor;
+        *persona = lst->persona;
         free(lst);
         if(laux != NULL)
             laux->anterior = NULL;
@@ -83,16 +83,16 @@ P_NODO_LISTA borrar(P_NODO_LISTA lst, int pos, int *valor){
     if(laux->siguiente != NULL) {
 		laux->anterior->siguiente = laux->siguiente;
 		laux->siguiente->anterior = laux->anterior;
-		*valor = laux->valor;
+		*persona = laux->persona;
 		free(laux);
     }
     else if (pos==i){ //es el ultimo de la lista
         laux->anterior->siguiente=laux->siguiente; //null
-        *valor = laux->valor;
+        *persona = laux->persona;
         free(laux);
     }
     else {
-       	*valor = -1;
+       	persona = NULL;
    		printf("ERROR, fuera de posicion\n");
 	}
     
@@ -100,11 +100,11 @@ P_NODO_LISTA borrar(P_NODO_LISTA lst, int pos, int *valor){
     
 }
 
-P_NODO_LISTA buscar(P_NODO_LISTA lst, int valor){
+P_NODO_LISTA buscar(P_NODO_LISTA lst, int dni){
     
     P_NODO_LISTA laux;
     for(laux=lst; laux!=NULL;laux=laux->siguiente)
-        if(laux->valor == valor) break;
+        if(laux->persona.DNI == dni) break;
         
     return(laux);    
 }
@@ -112,9 +112,10 @@ P_NODO_LISTA buscar(P_NODO_LISTA lst, int valor){
 void imprimir_lista (P_NODO_LISTA lst){
     P_NODO_LISTA p;
     p=lst;
-    
-    while(p!= NULL){
-        printf("%d- ", p->valor);
+    printf("Valores dentro de lista:\n");
+
+    while(p != NULL){
+        printf("\tDNI: %d - Name: %s \n", p->persona.DNI, p->persona.nombre);
         p=p->siguiente;			 
     }
     printf("\n");
