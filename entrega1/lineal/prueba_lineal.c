@@ -47,8 +47,6 @@ void executeInternalAction(int actionSelected, HashReg *list, int size)
     printf("Adios!");
     break;
   case ACTION_DELETE:
-    
-
     break;
 
   case ACTION_SHOW_TABLE:
@@ -57,9 +55,7 @@ void executeInternalAction(int actionSelected, HashReg *list, int size)
 
   case ACTION_SEARCH:
     search(list, size, &collision_counter);
-
     printf("Numero de colisiones: %d\n", collision_counter);
-
     break;
 
   case ACTION_SHOW_LOAD_FACTOR:

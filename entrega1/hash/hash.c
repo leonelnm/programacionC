@@ -36,7 +36,8 @@ void print_hash_table(HashReg *table, int size){
       printf("\n");
     }
 
-    printf("%s(%d)[%d]{%d}\t", table[i].car.matricula, table[i].car.originalkey, table[i].car.finalkey, table[i].car.attempts);
+    //printf("%s(%d)[%d]{%d}\t", table[i].car.matricula, table[i].car.originalkey, table[i].car.finalkey, table[i].car.attempts);
+    printf("%d\t", table[i].status);
   }
   printf("\n");
 }
