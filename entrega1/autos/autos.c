@@ -4,7 +4,7 @@
 #include <string.h>
 
 void print_car(Car *c){
-  printf("%s %s %s %d %d\n", c->matricula, c->marca, c->modelo, c->anio, c->precio);
+  printf("\n%s %s %s %d %d\n", c->matricula, c->marca, c->modelo, c->anio, c->precio);
 }
 
 void print_car_by_index(Car **list, int index){
@@ -26,7 +26,7 @@ Car *get_data_from_csv(char *filename, int size){
   // Comprobar que no hay error al abrir
   if (fp == NULL)
   {
-    printf("Error de lectura del archivo");
+    printf("Error de lectura del archivo\n");
     return NULL;
   }
 
@@ -66,9 +66,7 @@ void destroy_car_list(Car **carList, int size){
 
   for (int i = 0; i < size; i++)
   {
-    free((*carList[i]).matricula);
-    free((*carList[i]).modelo);
-    free((*carList[i]).marca);
+    destroy_car(&(*carList)[i]);
   }
 
   free(*carList);
@@ -78,4 +76,23 @@ void destroy_car(Car *car){
   free(car->matricula);
   free(car->marca);
   free(car->modelo);
+}
+
+int get_key(char *matricula){
+  int amount = 4;
+  char strNumbers[amount];
+  for (int i = 0; i < amount; i++)
+  {
+    strNumbers[i] = matricula[i];
+  }
+
+  return atoi(strNumbers);
+}
+
+char *get_matricula_user(){
+  char *matricula = (char*) malloc(sizeof(char) * 8);
+  printf("Inserte matricula: ");
+  scanf("%s", matricula);
+  printf("\n");
+  return matricula;
 }

@@ -3,16 +3,17 @@
 #include <string.h>
 #include "autos/autos.h"
 #include "hash/hash.h"
+#include "lineal/prueba_lineal.h"
 
 #define SIZE 350
 #define FILENAME "autos.csv"
 
 typedef enum
 {
-  EXIT,
-  LINEAL,
-  CUADRATICA,
-  DEPENDIENTE_CLAVE
+  APP_EXIT,
+  APP_LINEAL,
+  APP_CUADRATICA,
+  APP_DEPENDIENTE_CLAVE
 } HASHING_TYPE;
 
 int showMainMenu()
@@ -38,22 +39,21 @@ int showMainMenu()
 
 void executeSelected(int optionSelected)
 {
-  HASHING_TYPE hashing = optionSelected;
-  switch (hashing)
+  switch (optionSelected)
   {
-  case EXIT:
+  case APP_EXIT:
     printf("Adios!");
     break;
 
-  case LINEAL:
-    printf("LINEAL!");
+  case APP_LINEAL:
+    execute_prueba_lineal(FILENAME, SIZE);
     break;
 
-  case CUADRATICA:
+  case APP_CUADRATICA:
     printf("CUADRATICA!");
     break;
 
-  case DEPENDIENTE_CLAVE:
+  case APP_DEPENDIENTE_CLAVE:
     printf("DEPENDIENTE_CLAVE!");
     break;
 
@@ -67,17 +67,9 @@ void executeSelected(int optionSelected)
 
 int main()
 {
-  Car *dataCsv = get_data_from_csv(FILENAME, SIZE);
-  int index = 5;
-  //print_car(&dataCsv[index]);
-  //print_car_by_index(&dataCsv, index);
-
-  HashReg *hashReg = init(SIZE);
-  //print_hash_table(hashReg, SIZE);
-
+  
   int optionSelected = showMainMenu();
   executeSelected(optionSelected);
-
-  free(hashReg);
+  
   return 0;
 }

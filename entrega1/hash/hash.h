@@ -1,6 +1,8 @@
 #define OCUPADO 0
 #define LIBRE -1
 #define BORRADO -2
+#define NOT_FOUND -3
+#define NOT_INSERTED -4
 
 typedef struct hashReg
 {
@@ -8,10 +10,23 @@ typedef struct hashReg
   Car car;
 } HashReg;
 
+typedef enum
+{
+  ACTION_EXIT,
+  ACTION_SHOW_TABLE,
+  ACTION_SEARCH,
+  ACTION_DELETE,
+  ACTION_SHOW_LOAD_FACTOR
+} ACTIONS_TYPE;
+
+typedef enum{
+  TRUE, FALSE
+} BOOLEAN;
 
 HashReg *init(int size);
-void insert(Car car, Car *t_hash, int size);
-int search(char *matricula, Car *t_hash, int size);
-int del(char *matricula, Car *t_hash, int size);
-float loadfactor(Car *t_hash, int size);
+float load_factor(HashReg *t_hash, int size);
 void print_hash_table(HashReg *table, int size);
+
+int show_menu_hash();
+
+int H(char *matricla, int size);

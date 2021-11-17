@@ -17,10 +17,17 @@ HashReg *init(int size){
 
 }
 
-void insert(Car car, Car *t_hash, int size);
-int search(char *matricula, Car *t_hash, int size);
-int del(char *matricula, Car *t_hash, int size);
-float load_factor(Car *t_hash, int size);
+float load_factor(HashReg *t_hash, int size){
+  int elements = 0;
+  for (int i = 0; i < size; i++)
+  {
+    if(OCUPADO == t_hash[i].status){
+      elements += 1;
+    }
+  }
+  
+  return ((float) elements / size);
+}
 
 void print_hash_table(HashReg *table, int size){
   for (int i = 0; i < size; i++)
@@ -29,7 +36,35 @@ void print_hash_table(HashReg *table, int size){
       printf("\n");
     }
 
-    printf("%d\t", table[i].status);
+    printf("%s(%d)[%d]{%d}\t", table[i].car.matricula, table[i].car.originalkey, table[i].car.finalkey, table[i].car.attempts);
   }
   printf("\n");
+}
+
+int show_menu_hash(){
+
+  printf("\n\nOpciones disponibles:\n");
+  printf("1. Ver tabla hash\n");
+  printf("2. Buscar\n");
+  printf("3. Eliminar\n");
+  printf("4. Mostrar Factor de Carga\n");
+  printf("0. Salir\n");
+  printf("\nSeleccione acción: ");
+
+  int optionSelected = -1;
+  scanf("%d", &optionSelected);
+
+  while (optionSelected < 0 || optionSelected > 4)
+  {
+    printf("\nInserte opción válida 0-5: ");
+    scanf("%d", &optionSelected);
+  }
+
+  return optionSelected;
+
+}
+
+int H(char *matricula, int size){
+  int k = get_key(matricula);
+  return (k % size);
 }
