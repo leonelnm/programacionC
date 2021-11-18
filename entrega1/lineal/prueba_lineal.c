@@ -47,8 +47,20 @@ void executeInternalAction(int actionSelected, HashReg *list, int size)
     printf("Adios!");
     break;
   case ACTION_DELETE:
-    break;
+    {
+      int position = search(list, size, &collision_counter);
+      if(NOT_FOUND != position){
+        // Crea el Registro 'borrado'
+        HashReg reg;
+        reg.status = BORRADO;
+        list[position] = reg;
+        printf("Matricula eliminada!\n");
+      }else{
+        printf("No se ha encontrado la matricula indicada\n");
+      }
 
+      break;
+    }
   case ACTION_SHOW_TABLE:
     print_hash_table(list, size);
     break;
